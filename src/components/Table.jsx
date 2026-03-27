@@ -5,7 +5,7 @@ const Table = ({ list, handleDelete, handleEdit }) => {
     <table>
       <thead>
         <tr style={{background: 'transparent', transform: 'none'}}>
-          <th style={{textAlign: 'center', color: 'var(--text-dim)'}}>#</th>
+          <th style={{textAlign: 'center', color: 'var(--text-dim)'}}>Sr. No</th>
           <th style={{textAlign: 'left', paddingLeft: '20px', color: 'var(--text-dim)'}}>Task</th>
           <th style={{textAlign: 'right', paddingRight: '20px', color: 'var(--text-dim)'}}>Actions</th>
         </tr>
