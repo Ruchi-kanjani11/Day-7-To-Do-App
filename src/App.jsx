@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import Form from './components/Form'
 import './App.css'
 import Table from './components/Table';
@@ -26,6 +26,7 @@ const App = () => {
         newList=[...list,{...todo,id:Date.now()}]
     }
       setList(newList);
+      localStorage.setItem('todos',JSON.stringify(newList))
       console.log(newList)
       setTodo({})
     })
@@ -33,12 +34,18 @@ const App = () => {
     const handleDelete=((id)=>{
       const newList=list.filter((val)=>val.id!=id) 
       setList(newList);
+      localStorage.setItem('todos',JSON.stringify(newList));
     })
 
     const handleEdit=((id)=>{
       const data=list.find((val)=>val.id==id)
       setTodo(data); 
     })
+
+  useEffect(()=>{
+    let oldList=JSON.parse(localStorage.getItem('todos')) || [];
+    setList(oldList);
+  },[])
   return (
     <>
       <Form handleChange={handleChange} todo={todo} handleSubmit={handleSubmit}></Form>
